@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz Aniversario Mi Amor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Kaushan+Script&display=swap" rel="stylesheet" />
+  <style>
+    /* Estilo base de libreta */
+    body {
+      margin: 0;
+      padding: 2rem 2rem 2rem 4rem;
+      font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fdf6e3;
+      background-image: 
+        radial-gradient(circle, #fffaf0 2px, transparent 3px),
+        linear-gradient(to bottom, transparent 24px, #e8d7e7 25px),
+        linear-gradient(to bottom, #fdf6e3 0.1rem, #fdf6e3 100%);
+      background-size: 30px 30px, 100% 30px, 100% 30px;
+      background-repeat: repeat, repeat, repeat;
+      line-height: 30px;
+      color: #4a2c3a;
+      user-select: none;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+      border-left: 20px solid #ffd1dc;
+      box-shadow: inset 15px 0 15px -15px rgba(0,0,0,0.1);
+    }
+
+    /* Margen espiralado de libreta */
+    body::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      background: 
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 24px,
+          #ff9eb5 25px,
+          #ff9eb5 26px,
+          transparent 27px,
+          transparent 50px
+        );
+      z-index: 1;
+    }
+
+    /* Decoración de esquina doblada */
+    body::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, transparent 50%, #f5c8d0 50%);
+      z-index: 2;
+    }
+
+    header {
+      text-align: center;
+      font-size: 2.8rem;
+      color: #d6336c;
+      margin: 2rem 0 3rem;
+      text-shadow: 2px 2px 4px rgba(181, 42, 87, 0.3);
+      position: relative;
+      padding: 1rem;
+      z-index: 10;
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    header::before, header::after {
+      content: "✧";
+      margin: 0 15px;
+      color: #ff9eb5;
+      font-size: 2rem;
+    }
+
+    .heart-container {
+      position: relative;
+      width: 90%;
+      height: 65vh;
+      margin: 0 auto 3rem;
+      border: 2px dashed #d6336c88;
+      border-radius: 12px;
+      background: rgba(255, 240, 245, 0.85);
+      box-shadow:
+        inset 0 0 15px #d6336c22,
+        0 0 25px #d6336c44,
+        3px 3px 10px rgba(0,0,0,0.1);
+      padding: 2rem;
+      overflow: hidden;
+      background-clip: padding-box;
+      z-index: 5;
+    }
+
+    .heart-container::before {
+      content: "Encuéntrame!!";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffd1dc;
+      color: #d6336c;
+      padding: 5px 20px;
+      border-radius: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 6;
+    }
+
+    .heart {
+      position: absolute;
+      animation: float 10s infinite ease-in-out;
+      text-decoration: none;
+      color: #d6336c;
+      cursor: default;
+      user-select: none;
+      transition: transform 0.3s ease, opacity 0.4s ease, filter 0.3s ease;
+      filter: drop-shadow(1px 1px 1px #b02a57aa);
+      opacity: 0.8;
+      z-index: 10;
+    }
+
+    .heart:hover {
+      transform: scale(1.5) rotate(0deg);
+      opacity: 1;
+      filter: drop-shadow(0 0 8px #ff6699cc);
+      z-index: 100;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(var(--rotate)); opacity: 0.8; }
+      50% { transform: translateY(-12px) rotate(var(--rotate)); opacity: 1; }
+    }
+    
+    footer {
+      text-align: center;
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1.2rem;
+      color: #b02a57;
+      margin-top: 2rem;
+      user-select: none;
+      text-shadow: 0 0 3px #d6336c88;
+      padding: 1rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #d6336c, transparent);
+    }
+
+    .decor-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #d6336c88;
+      border-radius: 50%;
+      opacity: 0.3;
+      animation: pulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.2); }
+    }
+    
+    /* Elementos decorativos adicionales */
+    .sticky-note {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: #ffffcc;
+      padding: 15px;
+      font-size: 1.1rem;
+      transform: rotate(3deg);
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      opacity: 0.95;
+      border-radius: 2px 15px 2px 2px;
+      transition: all 0.4s ease;
+      overflow: hidden;
+      font-weight: bold;
+      color: #8b5a2b;
+    }
+    
+    .sticky-note::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-width: 15px;
+      border-style: solid;
+      border-color: transparent #f5c8d0 #f5c8d0 transparent;
+    }
+    
+    .sticky-note:hover {
+      transform: rotate(0deg) scale(1.05);
+      opacity: 1;
+      z-index: 20;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .paper-clip {
+      position: absolute;
+      width: 30px;
+      height: 50px;
+      background: linear-gradient(45deg, #b0b0b0, #e0e0e0);
+      border-radius: 50% 50% 0 0;
+      transform: rotate(45deg);
+      opacity: 0.8;
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      z-index: 15;
+    }
+    
+    .paper-clip::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 20px;
+      border: 2px solid #888;
+      border-radius: 5px;
+    }
+    
+    .love-quote {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: #d6336c;
+      text-align: center;
+      margin: 1rem auto 2rem;
+      max-width: 600px;
+      position: relative;
+      padding: 0 20px;
+      z-index: 5;
+    }
+    
+    .love-quote::before, .love-quote::after {
+      content: """;
+      font-size: 3rem;
+      color: #ff9eb5;
+      position: absolute;
+      top: -15px;
+    }
+    
+    .love-quote::before {
+      left: 0;
+    }
+    
+    .love-quote::after {
+      right: 0;
+      transform: scaleX(-1);
+    }
+    
+    .pencil {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 120px;
+      height: 25px;
+      background: linear-gradient(to right, #ff9966, #ff5e62);
+      border-radius: 3px;
+      transform: rotate(30deg);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+      z-index: 1000;
+      opacity: 0.9;
+      animation: pencil-tap 4s infinite;
+    }
+    
+    .pencil::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -12px;
+      width: 25px;
+      height: 25px;
+      background: #333;
+      clip-path: polygon(0 50%, 100% 0, 100% 100%);
+    }
+    
+    .pencil::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: -12px;
+      width: 12px;
+      height: 12px;
+      background: #ffd700;
+      border-radius: 50%;
+      box-shadow: 0 0 3px #ffd700;
+    }
+    
+    @keyframes pencil-tap {
+      0%, 5%, 95%, 100% { transform: rotate(30deg); }
+      10%, 90% { transform: rotate(25deg); }
+    }
+    
+    .polaroid {
+      position: absolute;
+      width: 180px;
+      height: 220px;
+      background: white;
+      padding: 15px 15px 50px 15px;
+      transform: rotate(-5deg);
+      box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+      z-index: 8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #eee;
+      transition: all 0.4s ease;
+      right: 5%;
+      top: 10%;
+    }
+    
+    .polaroid:hover {
+      transform: rotate(0deg) scale(1.05);
+      z-index: 50;
+    }
+    
+    .polaroid img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border: 1px solid #ddd;
+    }
+    
+    .polaroid .caption {
+      margin-top: 10px;
+      font-family: 'Patrick Hand', cursive;
+      color: #333;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    
+    .date-badge {
+      position: absolute;
+      top: 20px;
+      left: 60px;
+      background: #d6336c;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      transform: rotate(-5deg);
+      font-weight: bold;
+      z-index: 10;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    /* Contenedor fijo para el confeti */
+    #confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2000;
+      overflow: hidden;
+    }
+    
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #d6336c;
+      opacity: 0;
+      z-index: 100;
+      animation: confetti-fall 5s ease-in forwards;
+    }
+    
+    @keyframes confetti-fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    .special-effect {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, transparent, rgba(214, 51, 108, 0.1));
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.5;
+    }
+    
+    .counter {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: #d6336c;
+      z-index: 20;
+    }
+  </style>
+</head>
+<body>
+  <div class="special-effect"></div>
+  
+  <div class="date-badge">5 de Julio</div>
+  
+  <header>Feliz aniversario mi amooor, tienes una sorpresa en uno de los ❤️...</header>
+  
+
+  <div class="heart-container" id="heartContainer">
+    <div class="counter">Corazones: <span id="heartCount">0</span></div>
+  </div>
+  
+  <div class="sticky-note" style="top: 50px; left: 30px; background: #ffd1dc; transform: rotate(-2deg);">
+    Me haces reir incluso cuando no estoy en el mood para tener siquiera una sonrisa &lt;3
+  </div>
+  
+  <div class="sticky-note" style="bottom: 100px; left: 50px; background: #c5e1ff; transform: rotate(1deg);">
+    Para la persona más bonita del universo
+  </div>
+  
+  <div class="sticky-note" style="top: 150px; right: 40px; background: #d0f0c0; transform: rotate(4deg);">
+   No importa cuántas veces diga te quiero, siempre te querré más que eso
+  </div>
+  
+  <div class="polaroid">
+    <img src="1.jpg" alt="Nuestra foto especial">
+    <div class="caption">Mwaaaak &lt;3</div>
+  </div>
+  
+  <div class="paper-clip" style="top: 55px; left: 180px;"></div>
+  <div class="paper-clip" style="bottom: 210px; right: 100px; transform: rotate(135deg);"></div>
+  
+  <div class="pencil"></div>
+  
+  <!-- Contenedor fijo para el confeti -->
+  <div id="confetti-container"></div>
+  
+  <footer>Con todo mi ❤️ - Para Daniela</footer>
+
+  <script>
+    const container = document.getElementById('heartContainer');
+    const heartEmojis = ['❤️','💖','💘','💕','💞','💓','💗','💝','💟'];
+    const heartCount = document.getElementById('heartCount');
+    let heartsCreated = 0;
+
+    // Crear corazones
+    for (let i = 0; i < 45; i++) {
+      const emoji = document.createElement(i === 0 ? 'a' : 'div');
+      const randomEmoji = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      const size = Math.floor(Math.random() * 30) + 20;
+      const posX = Math.random() * 90;
+      const posY = Math.random() * 80;
+      const rotate = Math.random() * 360;
+
+      if (i === 0) {
+        emoji.href = 'https://www.youtube.com/watch?v=ZI7Co3mLt9M';
+        emoji.target = '_blank';
+        emoji.style.textDecoration = 'none';
+        emoji.style.color = 'inherit';
+        emoji.classList.add('special-heart');
+      }
+
+      emoji.textContent = randomEmoji;
+      emoji.className = 'heart';
+      emoji.style.left = `${posX}%`;
+      emoji.style.top = `${posY}%`;
+      emoji.style.fontSize = `${size}px`;
+      emoji.style.setProperty('--rotate', `${rotate}deg`);
+      emoji.style.animationDuration = `${8 + Math.random() * 6}s`;
+      emoji.style.animationDelay = `${Math.random() * 10}s`;
+
+      container.appendChild(emoji);
+      heartsCreated++;
+    }
+    
+    heartCount.textContent = heartsCreated;
+
+    // Crear puntos decorativos
+    for(let j = 0; j < 40; j++) {
+      const dot = document.createElement('div');
+      dot.className = 'decor-dot';
+      dot.style.left = `${Math.random() * 100}%`;
+      dot.style.top = `${Math.random() * 90}%`;
+      dot.style.animationDelay = `${Math.random() * 4}s`;
+      container.appendChild(dot);
+    }
+    
+    // Crear contenedor para confeti
+    const confettiContainer = document.getElementById('confetti-container');
+    
+    // Crear confeti ocasional
+    setInterval(() => {
+      if (Math.random() > 0.7) {
+        createConfetti();
+      }
+    }, 2000);
+    
+    function createConfetti() {
+      for (let i = 0; i < 15; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.animationDelay = `${Math.random() * 2}s`;
+        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+        confetti.style.width = `${Math.random() * 10 + 5}px`;
+        confetti.style.height = `${Math.random() * 10 + 5}px`;
+        confettiContainer.appendChild(confetti);
+        
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+    }
+    
+    // Efecto especial para corazones especiales
+    const specialHeart = document.querySelector('.special-heart');
+    if (specialHeart) {
+      specialHeart.addEventListener('mouseover', function() {
+        for (let i = 0; i < 30; i++) {
+          setTimeout(() => {
+            createSparkle(this.getBoundingClientRect().left + 25, this.getBoundingClientRect().top + 25);
+          }, i * 50);
+        }
+      });
+    }
+    
+    function createSparkle(x, y) {
+      const sparkle = document.createElement('div');
+      sparkle.style.position = 'fixed';
+      sparkle.style.left = `${x}px`;
+      sparkle.style.top = `${y}px`;
+      sparkle.style.width = '5px';
+      sparkle.style.height = '5px';
+      sparkle.style.backgroundColor = '#ffd700';
+      sparkle.style.borderRadius = '50%';
+      sparkle.style.boxShadow = '0 0 8px #ffd700';
+      sparkle.style.animation = 'sparkle-fade 1s forwards';
+      document.body.appendChild(sparkle);
+      
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 50 + 30;
+      const targetX = x + Math.cos(angle) * distance;
+      const targetY = y + Math.sin(angle) * distance;
+      
+      sparkle.animate([
+        { transform: 'translate(0, 0)', opacity: 1 },
+        { transform: `translate(${targetX - x}px, ${targetY - y}px)`, opacity: 0 }
+      ], {
+        duration: 1000,
+        easing: 'ease-out'
+      });
+      
+      setTimeout(() => {
+        sparkle.remove();
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
