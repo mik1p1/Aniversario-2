@@ -417,6 +417,31 @@
       color: #d6336c;
       z-index: 20;
     }
+
+#playMusic {
+  position: fixed;
+  bottom: 20px;     /* separación desde abajo */
+  left: 50%;        /* centro horizontal */
+  transform: translateX(-50%);  /* moverlo la mitad de su ancho hacia la izquierda para centrar */
+  padding: 12px 28px;
+  background-color: #d6336c;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 8px #b02a57aa;
+  user-select: none;
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+}
+
+#playMusic:hover {
+  background-color: #ff4d8a;
+  box-shadow: 0 0 15px #ff6699cc;
+}
+
   </style>
 </head>
 <body>
@@ -456,7 +481,28 @@
   <!-- Contenedor fijo para el confeti -->
   <div id="confetti-container"></div>
   
-  <footer>Con todo mi ❤️ - Para Daniela</footer>
+  <footer>Con todo mi ❤️ - Para Daniela
+<button id="playMusic" style="
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 28px;
+  background-color: #d6336c;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 8px #b02a57aa;
+  user-select: none;
+  z-index: 9999;
+  transition: background-color 0.3s ease;
+">
+  🎵 Reproducir música
+</button>
+  </footer>
 
   <script>
     const container = document.getElementById('heartContainer');
@@ -465,7 +511,7 @@
     let heartsCreated = 0;
 
     // Crear corazones
-    for (let i = 0; i < 45; i++) {
+    for (let i = 0; i < 85; i++) {
       const emoji = document.createElement(i === 0 ? 'a' : 'div');
       const randomEmoji = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
       const size = Math.floor(Math.random() * 30) + 20;
@@ -576,5 +622,26 @@
       }, 1000);
     }
   </script>
+
+<script>
+  const audioFiles = ['1.mp3', '2.mp3', '3.mp3', '4.mp3', '5.mp3'];
+  const randomIndex = Math.floor(Math.random() * audioFiles.length);
+  const audio = new Audio(audioFiles[randomIndex]);
+  audio.volume = 0.2;
+  const heartLink = document.querySelector('.heart-container a.heart');
+
+heartLink.addEventListener('click', () => {
+  audio.pause();
+  audio.currentTime = 0;
+});
+
+  document.getElementById("playMusic").addEventListener("click", () => {
+    audio.play().catch(err => {
+      alert("No se pudo reproducir el audio. 😞");
+      console.error(err);
+    });
+  });
+</script>
+
 </body>
 </html>
